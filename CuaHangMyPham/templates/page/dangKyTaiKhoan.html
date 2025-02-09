@@ -1,0 +1,73 @@
+{% extends "pages/layout.html" %} 
+{% block title %} Đăng ký 
+{% endblock %} 
+{% block content %} 
+{% load static %}
+<!-- <div class="container w-50 mt-3 mb-3" style="background-color: mistyrose; border-radius: 20px;">
+    <form method="post" class="w-50 m-auto" >
+        <h2 class="pt-2 text-center t text-danger">Đăng ký tài khoản</h2>
+        {% csrf_token %}
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+        {% endif %}
+        <div class="form-group">
+            <label for="TenTK">Tên tài khoản</label>
+            <input name="TenTK" type="text" class="form-control" id="TenTK" required>
+        </div>
+        <div class="form-group">
+            <label for="MatKhau">Mật khẩu</label>
+            <input name="MatKhau" type="password" class="form-control" id="MatKhau" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="MatKhau2">Nhập lại mật khẩu</label>
+            <input name="MatKhau2" type="password" class="form-control" id="MatKhau2" required>
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input name="Email" type="email" class="form-control" id="Email" required>
+        </div>
+
+       
+        <div class="text-center mt-2" style=" display: flex; justify-content: center;">
+            <button type="submit" class="btn btn-primary mb-2">Đăng ký</button>
+        </div>
+    </form>
+</div> -->
+<br>
+<div class="container d-flex justify-content-center align-items-center vh-75">
+    <div class="card shadow-lg p-4 w-100" style="max-width: 400px; border-radius: 15px; background: linear-gradient(to bottom, #fff, mistyrose); border: 1px solid #f5c2c7;">
+        <form method="post">
+            <h2 class="text-center text-danger mb-4" style="font-weight: bold;">Đăng ký tài khoản</h2>
+            {% csrf_token %}
+            {% if error_message %}
+            <div class="alert alert-danger text-center" role="alert">
+                {{ error_message }}
+            </div>
+            {% endif %}
+            <div class="form-group mb-3">
+                <label for="TenTK" class="form-label">Tên tài khoản</label>
+                <input name="TenTK" type="text" class="form-control" id="TenTK" placeholder="Nhập tên tài khoản" required style="border: 1px solid #f5c2c7; border-radius: 10px;">
+            </div>
+            <div class="form-group mb-3">
+                <label for="MatKhau" class="form-label">Mật khẩu</label>
+                <input name="MatKhau" type="password" class="form-control" id="MatKhau" placeholder="Nhập mật khẩu" required style="border: 1px solid #f5c2c7; border-radius: 10px;">
+            </div>
+            <div class="form-group mb-3">
+                <label for="MatKhau2" class="form-label">Nhập lại mật khẩu</label>
+                <input name="MatKhau2" type="password" class="form-control" id="MatKhau2" placeholder="Nhập lại mật khẩu" required style="border: 1px solid #f5c2c7; border-radius: 10px;">
+            </div>
+            <div class="form-group mb-3">
+                <label for="Email" class="form-label">Email</label>
+                <input name="Email" type="email" class="form-control" id="Email" placeholder="Nhập email" required style="border: 1px solid #f5c2c7; border-radius: 10px;">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-danger w-100 py-2" style="border-radius: 25px; background-color: #f76c6c; border: none;">Đăng ký</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+{% endblock %}

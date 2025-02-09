@@ -1,0 +1,72 @@
+{% extends "pages/layoutAd.html" %}
+{% block title %}
+    Danh sách nhập hàng
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class="container-fluid mt-3">
+    <h2>Danh sách nhập hàng</h2>
+    <a class="btn btn-success mt-2 mb-2 float-right" href="/admin/themNhapHang">+ Tạo phiếu nhập hàng</a>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Mã phiếu nhập hàng</th>
+                <th scope="col">Nhà cung cấp</th>
+                <th scope="col">Tên nhân viên</th>
+                <th scope="col">Ngày nhập</th>
+                <th scope="col">Tổng tiền</th>
+                <th scope="col">Tác vụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in listUser %}
+            <tr>
+                <td>{{ user.0 }}</td> <!-- Mã phiếu nhập hàng -->
+                <td>{{ user.1 }}</td> <!-- Tên nhà cung cấp -->
+                <td>{{ user.2 }}</td> <!-- Tên nhân viên -->
+                <td>{{ user.3|date:"d/m/Y h:i a" }}</td> <!-- Ngày nhập -->
+                <td>{{ user.4 }}</td> <!-- Tổng tiền -->
+                <td>
+                          
+                    <a class="btn btn-outline-primary" href="{% url 'XemCTNhapHang' user.0 %}">Xem</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- PHÂN TRANG -->
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <!-- Nút "Previous" -->
+                        <li class="page-item {% if listUser.number <= 1 %} disabled {% endif %}">
+                            <a class="page-link" href="/admin/danhSachNhapHang/?page={{ previous_page }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <!-- Hiển thị các nút số trang -->
+                        {% for i in page_range %}
+                            <li class="page-item {% if i == listUser.number %}active{% endif %}">
+                                <a class="page-link" href="/admin/danhSachNhapHang/?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endfor %}
+
+                        <!-- Nút "Next" -->
+                        <li class="page-item {% if listUser.number >= total_pages %} disabled {% endif %}">
+                            <a class="page-link" href="/admin/danhSachNhapHang/?page={{ next_page }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
